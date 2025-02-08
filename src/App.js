@@ -25,7 +25,8 @@ function App() {
         setEpisodeUrl(selectedVideo);
 
       } catch (error) {
-        console.error(error);
+        //console.error(error);
+        window.location.reload();
       }
     };
     fetchData();
@@ -56,15 +57,15 @@ function App() {
             <h1>{animeData.names.en}</h1>
             <h1 className='altName'>{animeData.names.ru}</h1>
             <h2>Эпизод: {episodeNum}</h2>
-            <a target="_blank" href={`${libriaUrl}/release/${animeData.code}.html`}>
-              <img src={libriaIco} />
+            <a target="noopener" href={`${libriaUrl}/release/${animeData.code}.html`}>
+              <img src={libriaIco} alt="Go to Anilibria" />
             </a>
           </div>
         </div>
       </section>
       <section>
         <div className="player">
-          <ReactPlayer class='video' width='100%' height='100vh' playing={true} onPlay={handlePlay} onPause={handlePause} onEnded={handleVideoEnd} controls={true} url={episodeUrl} />
+          <ReactPlayer className='video' width='100%' height='100vh' playing={true} onPlay={handlePlay} onPause={handlePause} onEnded={handleVideoEnd} controls={true} url={episodeUrl} />
         </div>
       </section>
     </>
